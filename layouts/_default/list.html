@@ -1,0 +1,30 @@
+{{ define "main" }}
+
+  <h1>{{ .Title }}</h1>
+
+  {{ .Content }}
+
+  <hr>
+
+  <ul class="post-list">
+    {{ range .Pages }}
+    <li>
+      <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
+
+      {{ if .Lastmod }}
+        <span class="date-text lastmod">
+          {{- .Lastmod | time.Format "2006-01-01" -}}
+        </span>
+      {{ end }}
+
+      {{ if .Date }}
+        <span class="date-test date">
+          {{- .Date | time.Format "2006-01-01" -}}
+        </span>
+      {{ end }}
+
+    </li>
+    {{ end }}
+  </ul>
+
+{{ end }}
