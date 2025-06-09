@@ -1,0 +1,23 @@
+{{ define "main" }}
+
+{{/*  제목 표시  */}}
+<h1 class="single-title-text">
+  {{ .Title }}
+</h1>
+
+{{/*  게시글 정보 표시  */}}
+
+{{ partial "page-info.html" . }}
+
+{{ partial "page-ps-info.html" .}}
+
+
+{{/*  TOC 있다면 표시  */}}
+{{ if .Params.toc }}
+  {{ .TableOfContents}}
+{{ end }}
+
+{{/*  내용 표시  */}}
+{{ .Content }}
+
+{{ end }}

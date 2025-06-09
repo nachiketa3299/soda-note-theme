@@ -1,0 +1,13 @@
+{{ $noparse := .Get "noparse" | default false }}
+
+<div class="caption-container">
+  <figure>
+    {{- if $noparse -}}
+      {{ .Inner }}
+    {{- else -}}
+      {{ .Inner | markdownify }}
+    {{- end -}}
+
+    <figcaption>{{ .Get "text" }}</figcaption>
+  </figure>
+</div>

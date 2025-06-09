@@ -1,0 +1,73 @@
+{{ define "main" }}
+
+{{ $ps_db := .Site.Data.ps_db }}
+{{ $ps_dict := slice }}
+
+{{ range $item := .Site.Data.ps_db }}
+  {{ $latest := index (sort $item.solved "date" "desc") 0 }}
+  {{ $dict_entry := merge $item (dict "latest_solved_date" $latest.date)}}
+  {{ $ps_dict = $ps_dict | append $dict_entry }}
+{{ end }}
+
+{{ $ps_dict := sort $ps_dict "latest_solved_date" "desc" }}
+
+<table class="ps-list-table">
+  <thead>
+    <th>Site</th>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Rank</th>
+    <th>Tags</th>
+    <th>Solved Dates</th>
+    <th>Review Note</th>
+  </thead>
+
+  <tbody>
+    {{ range $ps_dict }}
+    <tr>
+      <td style="text-align:center;">{{ .site }}</td>
+      <td style="text-align:center;">{{ .id }}</td>
+      <td style="text-align:center;"><a href="{{ .link }}">{{ .title }}</a></td>
+      <td style="text-align:center;">{{ .rank }}</td>
+
+      <td>
+        {{ if .tags }}
+          <ul class="ps-tag-list">
+            {{ range .tags }}
+            <li>
+              <span class="ps-tag-text">{{ . }}</span>
+            </li>
+            {{ end }}
+          </ul>
+        {{ else }}
+          -
+        {{ end }}
+      </td>
+
+      <td style="text-align:center;">
+        {{ if .solved }}
+          <ul class="ps-date-list">
+            {{ range .solved }}
+              <li><span class="date-text">{{ .date | time.Format "01-02/06" }}</span></li>
+            {{ end }}
+          </ul>
+        {{ else }}
+        -
+        {{ end }}
+      </td>
+
+      <td style="text-align:center;">
+          {{ $page := $.Site.GetPage (printf "ps/boj_%d" .id)}}
+          {{ if $page }}
+            <a href="{{ $page.RelPermalink }}">리뷰 보기</a>
+          {{ else }}
+            -
+          {{ end }}
+      </td>
+    </tr>
+    {{ end}}
+  </tbody>
+
+</table>
+
+{{ end }}

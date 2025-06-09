@@ -1,0 +1,4 @@
+{{ $syntax := .Get "syntax" | default "text" }}
+{{ $options := .Get "options" | default "" }}
+
+{{ highlight (trim .Inner " \n\r\t") $syntax $options }}

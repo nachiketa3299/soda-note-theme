@@ -1,28 +1,10 @@
 {{ define "main" }}
-  {{ .Content }}
 
-  <h2>Recent Posts</h2>
+{{ .Content }}
 
-  <ul>
-    {{ range site.RegularPages }}
-      <li>
-        <span class="section-container section-text">{{- upper .Section -}}</span>
-        <a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a>
-
-        {{ if .Lastmod }}
-          <span class="date-text lastmod">
-            {{- .Lastmod | time.Format "2006-01-01" -}}
-          </span>
-        {{ end }}
-
-        {{ if .Date }}
-          <span class="date-test date">
-            {{- .Date | time.Format "2006-01-01" -}}
-          </span>
-        {{ end }}
-
-      </li>
-    {{ end }}
-  </ul>
+{{ partial "post-list.html" (dict 
+  "title" "Recent Posts" 
+  "ctx" (dict "Pages" site.RegularPages))
+}}
 
 {{ end }}

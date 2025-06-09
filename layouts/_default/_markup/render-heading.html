@@ -1,0 +1,10 @@
+{{- $level := .Level -}}
+
+<h{{ $level }} id="{{ .Anchor | safeURL }}" data-level="{{ $level }}">
+  <span class="header-anchor">
+    <a href="#{{ .Anchor | safeURL }}">
+      #<sup>{{.Level}}</sup>
+    </a>
+  </span> 
+  {{ .Text | safeHTML }}
+</h{{ $level }}>

@@ -1,0 +1,12 @@
+{{ define "main" }}
+
+taxonomy.html
+
+{{ $title := printf "%s: %s" (title .Data.Singular) .Title }}
+
+{{ partial "post-list.html" (dict
+    "title" $title
+    "ctx" (dict "Pages" .Pages)
+) }}
+
+{{ end }}

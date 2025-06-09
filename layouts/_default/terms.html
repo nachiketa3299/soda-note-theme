@@ -1,0 +1,19 @@
+{{ define "main" }}
+
+<h1>{{ title .Title }}</h1>
+
+{{ $class := "term-text" }}
+{{ if eq .Data.Plural "categories" }} {{ $class = "category-text" }}
+{{ else if eq .Data.Plural "tags" }} {{ $class = "tag-text" }} 
+{{end}}
+
+<ul class="term-list">
+  {{- range .Data.Terms -}}
+    <li>
+      <span class='{{- $class -}}'><a href="{{ .Page.RelPermalink }}">{{- .Page.Title -}}</a></span> 
+      <span class="post-count-text">{{ .Count }} Posts</span>
+    </li>
+  {{- end -}}
+</ul>
+
+{{ end }}

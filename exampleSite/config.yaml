@@ -1,0 +1,46 @@
+theme: soda-note-theme
+title: "soda-note-theme exampleSite"
+
+menu:
+  main:
+    - name: "Home"
+      url: "/"
+      weight: 1
+    - name: "Categories"
+      url: "/categories/"
+      weight: 3
+    - name: "Tags"
+      url: "/tags/"
+      weight: 4
+
+languageCode: ko-kr
+timezone: Asia/Seoul
+
+taxonomies:
+  category: "categories"
+  tag: "tags"
+
+capitalizeListTitles: false
+
+markup:
+  highlight:
+    anchorLineNos: false
+    codeFences: true
+    guessSyntax: true
+    lineNumbersInTable: true
+    lineAnchors: ''
+    lineNos: true
+    lineNoStart: 1
+    tabWidth: 2
+    style: monokai
+  tableOfContents:
+    startLevel: 1
+    endLevel: 3
+    ordered: false
+  goldmark:
+    renderer:
+      unsafe: true
+    extensions:
+      extras:
+        mark:
+          enable: true

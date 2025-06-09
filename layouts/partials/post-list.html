@@ -1,0 +1,44 @@
+{{ $title := .title | default "Recent Posts" }}
+{{ $ctx := .ctx }}
+
+<h2 class="post-list-header-text">{{ $title }}</h2>
+
+<ul class="post-list">
+  {{ range $ctx.Pages }}
+    <li class="post-list-item">
+      <div>
+        <a class="post-title-text" href="{{ .RelPermalink }}">
+          {{ .LinkTitle | default .Title | default "제목 없음" }}
+        </a>
+
+        {{ if ne .Date .Lastmod }}
+          <span class="date-text lastmod">{{ .Lastmod | time.Format "01-02/06" }}</span>
+        {{ end }}
+
+        {{ if .Date }}
+          <span class="date-text date">{{ .Date | time.Format "01-02/06" }}</span>
+        {{ end }}
+      </div>
+
+      <div class="section-category-box">
+        <span class="section-text"><a href='{{- printf "/%s/" .Section | relURL -}}'>{{- upper .Section -}}</a></span>
+
+        {{ with .Params.categories }}
+          <span class="category-list">
+            {{- range . }}
+              <span class="category-text"><a href='{{- "/categories/" | relLangURL }}{{ . | urlize -}}'>{{- . -}}</a></span>
+            {{- end }}
+          </span>
+        {{ end }}
+      </div>
+
+      {{ with .Params.tags }}
+        <div class="seq-box">
+          {{- range . -}}
+            <span class="tag-text"><a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{- . -}}</a></span>
+          {{- end -}}
+        </div>
+      {{ end }}
+    </li>
+  {{ end }}
+</ul>

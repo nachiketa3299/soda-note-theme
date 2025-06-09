@@ -6,17 +6,19 @@
   </head>
 
   <body>
-    <header>
-      {{ partial "header.html" . }}
-    </header>
+    <div class='main-box'>
+      <header>
+        {{ partial "header.html" . }}
+      </header>
 
-    <main>
-      {{ block "main" . }}{{ end }}
-    </main>
+      <main>
+        {{ block "main" . }}{{ end }}
+      </main>
 
-    <footer>
-      {{ partial "footer.html" . }}
-    </footer>
+      <footer>
+        {{ partial "footer.html" . }}
+      </footer>
+    </div>
   </body>
 
 </html>

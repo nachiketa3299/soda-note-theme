@@ -1,0 +1,17 @@
+{{ $ps_db := .Site.Data.ps_db }}
+{{ $parts := split .Title " " }}
+
+{{ $site := index $parts 0 }}
+{{ $id := index $parts 1 | int}}
+
+{{ $filtered := where (where $ps_db "id" $id) "site" $site}}
+{{ $match := index $filtered 0 }}
+
+<dl class="page-ps-info">
+  <dt>Title</dt>
+  <dd>{{ $match.site }} {{ $match.id }} {{ $match.rank }} <a href="{{ $match.link }}">{{ $match.title }}</a></dd>
+  <dt>Ps-Tags</dt>
+  <dd class="dd-group">{{- range $match.tags -}}<span class="ps-tag-text">{{ . }}</span>{{- end -}}</dd>
+  <dt>Solved</dt>
+  <dd class="dd-group">{{- range $match.solved -}}<span class="date-text">{{ .date | time.Format "01-02/06" }}</span>{{- end -}}</dd>
+</dl>

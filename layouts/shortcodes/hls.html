@@ -1,0 +1,5 @@
+{{ $source := .Get "source" | default "" }}
+{{ $syntax := .Get "syntax" | default "text" }}
+{{ $options := .Get "options" | default "" }}
+
+{{ highlight (.Page.Resources.GetMatch $source).Content $syntax $options }}
