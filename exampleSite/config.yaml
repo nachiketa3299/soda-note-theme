@@ -6,12 +6,18 @@ menu:
     - name: "Home"
       url: "/"
       weight: 1
+    - name: "PS"
+      url: "/ps/"
+      weight: 2
     - name: "Categories"
       url: "/categories/"
       weight: 3
     - name: "Tags"
       url: "/tags/"
       weight: 4
+    - name: "All Posts"
+      url: "/all-posts/"
+      weight: 5
 
 languageCode: ko-kr
 timezone: Asia/Seoul
@@ -21,6 +27,12 @@ taxonomies:
   tag: "tags"
 
 capitalizeListTitles: false
+
+services:
+  disqus:
+    shortname: 'even-idiots-can-make-games'
+  googleAnalytics:
+    id: G-TF4NJ6XV1W
 
 markup:
   highlight:

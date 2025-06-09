@@ -9,12 +9,13 @@
 
 {{ partial "page-info.html" . }}
 
+{{ partial "page-ps-info.html" .}}
+
 
 {{/*  TOC 있다면 표시  */}}
 {{ if .Params.toc }}
   {{ .TableOfContents}}
 {{ end }}
-
 
 {{/*  내용 표시  */}}
 {{ .Content }}

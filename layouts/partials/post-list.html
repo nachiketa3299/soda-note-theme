@@ -1,10 +1,22 @@
 {{ $title := .title | default "Recent Posts" }}
 {{ $ctx := .ctx }}
+{{ $limit := .limit }}
+{{ $section := .section }}
 
 <h2 class="post-list-header-text">{{ $title }}</h2>
 
 <ul class="post-list">
-  {{ range $ctx.Pages }}
+  {{ $pages := $ctx.Pages }}
+
+  {{ if $section }}
+    {{ $pages = where $pages "Section" $section }}
+  {{ end }}
+
+  {{ if $limit }}
+    {{ $pages = first $limit $pages }}
+  {{ end }}
+
+  {{ range $pages }}
     <li class="post-list-item">
       <div>
         <a class="post-title-text" href="{{ .RelPermalink }}">
@@ -21,22 +33,28 @@
       </div>
 
       <div class="section-category-box">
-        <span class="section-text"><a href='{{- printf "/%s/" .Section | relURL -}}'>{{- upper .Section -}}</a></span>
+        <span class="section-text">
+          <a href='{{ printf "/%s/" .Section | relURL }}'>{{ upper .Section }}</a>
+        </span>
 
         {{ with .Params.categories }}
           <span class="category-list">
-            {{- range . }}
-              <span class="category-text"><a href='{{- "/categories/" | relLangURL }}{{ . | urlize -}}'>{{- . -}}</a></span>
-            {{- end }}
+            {{ range . }}
+              <span class="category-text">
+                <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+              </span>
+            {{ end }}
           </span>
         {{ end }}
       </div>
 
       {{ with .Params.tags }}
         <div class="seq-box">
-          {{- range . -}}
-            <span class="tag-text"><a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{- . -}}</a></span>
-          {{- end -}}
+          {{ range . }}
+            <span class="tag-text">
+              <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
+            </span>
+          {{ end }}
         </div>
       {{ end }}
     </li>

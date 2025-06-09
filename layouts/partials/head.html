@@ -1,6 +1,9 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width">
 
+{{/*  네이버 인증  */}}
+<meta name="naver-site-verification" content="78f87e51731da805d96d41ff06fbe5278bbbab1f" />
+
 <title>
   {{ if .IsHome }}
     {{ site.Title }}
@@ -36,3 +39,10 @@
     src='{{"js/plantuml.js" | relURL }}' charset="utf-8">
   </script>
 {{ end }}
+
+{{/* Import Favicons */}}
+
+{{ partial "favicons.html" }}
+
+{{/* Import Google Analytics*/}}
+{{ partial "google_analytics.html" . }}

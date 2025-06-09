@@ -1,6 +1,6 @@
 {{ $ps_db := .Site.Data.ps_db }}
-{{ $parts := split .Title " " }}
 
+{{ $parts := split .Title " " }}
 {{ $site := index $parts 0 }}
 {{ $id := index $parts 1 | int}}
 

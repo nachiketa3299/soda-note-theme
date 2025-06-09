@@ -3,9 +3,8 @@
 {{ .Content }}
 
 {{ partial "post-list.html" (dict 
-  "title" "Recent Posts" 
+  "title" "All Posts" 
   "ctx" (dict "Pages" site.RegularPages)
-  "limit" 10
   )
 }}
 
