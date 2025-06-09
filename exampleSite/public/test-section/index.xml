@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>test-sections on soda-note-theme exampleSite</title>
+    <link>//localhost:1313/test-section/</link>
+    <description>Recent content in test-sections on soda-note-theme exampleSite</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Thu, 29 May 2025 00:00:00 +0900</lastBuildDate>
+    <atom:link href="//localhost:1313/test-section/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Test Page</title>
+      <link>//localhost:1313/test-section/test-page-2/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0900</pubDate>
+      <guid>//localhost:1313/test-section/test-page-2/</guid>
+      <description>&lt;h1 id=&#34;typography&#34; data-level=&#34;1&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#typography&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;1&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Typography&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;마크다운 문법으로 사용한 &lt;strong&gt;굵은 글씨&lt;/strong&gt;이고, &lt;em&gt;기울인 글씨&lt;/em&gt;입니다.&lt;/p&gt;&#xA;&lt;p&gt;아래 줄부터 마크다운 문법 인용구 시작입니다.&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;인용구 내용입니다.&lt;br&gt;&#xA;이렇게 개행도 됩니다.&lt;/p&gt;&#xA;&lt;/blockquote&gt;&#xA;&lt;p&gt;마크다운 문법 인용구가 끝났습니다.&lt;/p&gt;&#xA;&lt;h1 id=&#34;todo&#34; data-level=&#34;1&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#todo&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;1&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Todo&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;할 일 목록의 경우 다음처럼 표현됩니다.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 어쩌구&lt;/li&gt;&#xA;&lt;li&gt;&lt;input disabled=&#34;&#34; type=&#34;checkbox&#34;&gt; 저쩌구&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;mark&#34; data-level=&#34;1&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#mark&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;1&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Mark&#xD;&#xA;&lt;/h1&gt;&lt;p&gt;하이라이트는 &lt;mark&gt;이것처럼 &lt;strong&gt;표시&lt;/strong&gt; 된다고 &lt;em&gt;볼&lt;/em&gt; 수 &lt;code&gt;있습니다&lt;/code&gt;.&lt;/mark&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;code-rendering&#34; data-level=&#34;1&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#code-rendering&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;1&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Code Rendering&#xD;&#xA;&lt;/h1&gt;&lt;h2 id=&#34;inline&#34; data-level=&#34;2&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#inline&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;2&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Inline&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Inline-code&lt;/code&gt;는 이렇게 표현됩니다.&lt;/p&gt;&#xA;&lt;h2 id=&#34;block&#34; data-level=&#34;2&#34;&gt;&#xD;&#xA;  &lt;span class=&#34;header-anchor&#34;&gt;&#xD;&#xA;    &lt;a href=&#34;#block&#34;&gt;&#xD;&#xA;      #&lt;sup&gt;2&lt;/sup&gt;&#xD;&#xA;    &lt;/a&gt;&#xD;&#xA;  &lt;/span&gt; &#xD;&#xA;  Block&#xD;&#xA;&lt;/h2&gt;&lt;p&gt;그냥 코드 펜스&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

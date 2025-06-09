@@ -1,0 +1,185 @@
+@charset "UTF-8";
+@import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.1/GoormSansCode.min.css");
+@import url("https://statics.goorm.io/fonts/GoormSans/v1.0.0/GoormSans.min.css");
+@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap");
+:root {
+  --content-width: 600px;
+  --color-text-date: grey;
+  --color-text-lastmod: rgb(250, 134, 154);
+  --color-text-section: green;
+  --color-text-category: rgb(55, 183, 226);
+  --color-tag-foreground: rgb(85, 53, 12);
+  --color-tag-background: rgb(182, 182, 182);
+  --font-main: 'Goorm Sans';
+  --font-monospace: 'Goorm Sans Code', monospace;
+  --font-site-title: 'Luckiest Guy', cursive;
+  --font-tag: var(--font-monospace);
+  --font-section: var(--font-monospace);
+  --font-category: var(--font-monospace);
+  --font-date: var(--font-monospace);
+  --spin-speed: 40s; }
+
+.main-box {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--content-width);
+  font-family: var(--font-main); }
+
+.menu-box {
+  display: flex;
+  justify-content: flex-end; }
+  .menu-box .menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0; }
+    .menu-box .menu li {
+      margin: 0 0.3rem;
+      position: relative; }
+
+nav#TableOfContents {
+  padding: .75rem;
+  box-shadow: 0 0 0.1rem 0.05rem #dddddd; }
+  nav#TableOfContents::before {
+    content: "❁ Table Of Contents";
+    font-weight: bold; }
+  nav#TableOfContents a {
+    text-decoration: none; }
+    nav#TableOfContents a:hover {
+      text-decoration: underline; }
+
+.site-title-text {
+  font-family: var(--font-site-title); }
+
+.menu-item {
+  font-size: 1rem;
+  font-weight: bold; }
+  .menu-item::before {
+    content: "❁"; }
+  .menu-item > a {
+    text-decoration: none; }
+    .menu-item > a:hover {
+      text-decoration-style: wavy;
+      text-decoration-line: underline; }
+
+footer {
+  display: flex;
+  justify-content: flex-end; }
+  footer .footer-box {
+    border: 1px dashed black; }
+
+.post-title-text {
+  text-decoration: none;
+  font-weight: bold; }
+  .post-title-text:hover {
+    text-decoration-line: underline;
+    text-decoration-style: solid; }
+
+.post-list-item .date-text {
+  float: right; }
+
+.date-text {
+  font-family: var(--font-date); }
+  .date-text::before {
+    content: "("; }
+  .date-text::after {
+    content: ")"; }
+  .date-text.lastmod {
+    color: var(--color-text-lastmod); }
+  .date-text.date {
+    color: var(--color-text-date); }
+
+.tag-box {
+  display: flex;
+  justify-content: flex-start;
+  margin-top: -0.5rem; }
+
+.term-list li, .post-list li {
+  margin-bottom: 1.5rem;
+  background-color: white;
+  border-radius: .25rem;
+  box-shadow: 0 0 0.1rem 0.05rem #dddddd;
+  padding: .4rem; }
+  .term-list li:hover, .post-list li:hover {
+    box-shadow: 0 0 0.4rem 0.05rem #dddddd; }
+
+.post-list-item .tag-text {
+  font-size: 0.8rem; }
+
+.post-list-item .section-text {
+  font-size: 0.8rem; }
+
+.post-list-item .date-text {
+  font-size: 0.8rem; }
+
+.post-list-item .category-text {
+  font-size: 0.8rem; }
+
+.tag-text {
+  font-family: var(--font-tag);
+  background-color: var(--color-tag-background);
+  color: var(--color-tag-foreground);
+  border-radius: 0.2rem;
+  padding: 0 0.2rem; }
+  .tag-text::before {
+    content: "#";
+    margin-right: 0.25rem; }
+  .tag-text > a {
+    text-decoration: none;
+    color: inherit; }
+
+.section-category-box {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-top: 0.4rem; }
+  .section-category-box .category-list {
+    display: flex; }
+  .section-category-box .section-text::after {
+    content: ">"; }
+
+.seq-box {
+  display: flex;
+  gap: 0.5rem; }
+
+.section-text {
+  font-family: var(--font-section);
+  color: var(--color-text-section); }
+  .section-text > a {
+    text-decoration: none;
+    color: inherit; }
+
+.category-text {
+  font-family: var(--font-category);
+  color: var(--color-text-category); }
+  .category-text::before {
+    content: "["; }
+  .category-text::after {
+    content: "]"; }
+  .category-text > a {
+    text-decoration: none;
+    color: inherit; }
+
+.site-title-text::before {
+  content: "✿";
+  margin-right: .25rem;
+  display: inline-block;
+  animation: spin var(--spin-speed) linear infinite; }
+
+.single-title-text::before {
+  content: "✾";
+  margin-right: .25rem;
+  display: inline-block;
+  animation: spin var(--spin-speed) linear infinite; }
+
+.post-list-header-text::before {
+  content: "❀";
+  margin-right: .25rem;
+  display: inline-block;
+  animation: spin var(--spin-speed) linear infinite; }
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg); }
+  to {
+    transform: rotate(360deg); } }

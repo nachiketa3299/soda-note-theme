@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>tags on soda-note-theme exampleSite</title>
+    <link>//localhost:1313/tags/</link>
+    <description>Recent content in tags on soda-note-theme exampleSite</description>
+    <generator>Hugo</generator>
+    <language>ko-kr</language>
+    <lastBuildDate>Wed, 15 Mar 2023 11:00:00 -0700</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>blue</title>
+      <link>//localhost:1313/tags/blue/</link>
+      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
+      <guid>//localhost:1313/tags/blue/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>green</title>
+      <link>//localhost:1313/tags/green/</link>
+      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
+      <guid>//localhost:1313/tags/green/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>red</title>
+      <link>//localhost:1313/tags/red/</link>
+      <pubDate>Wed, 15 Mar 2023 11:00:00 -0700</pubDate>
+      <guid>//localhost:1313/tags/red/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>dp</title>
+      <link>//localhost:1313/tags/dp/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/dp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>dp_bitmask</title>
+      <link>//localhost:1313/tags/dp_bitmask/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/tags/dp_bitmask/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>
