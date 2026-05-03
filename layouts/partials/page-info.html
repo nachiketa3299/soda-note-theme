@@ -1,5 +1,5 @@
 {{ $dateMachine := .Date | time.Format "2006-01-02T15:04:05-07:00" }}
-{{ $dateHuman := .Date | time.Format "01-02/06" }}
+{{ $dateHuman := .Date | time.Format "2006-01-02" }}
 
 
 <dl class="page-info">
@@ -7,7 +7,7 @@
   <dd class="dd-group"><span class="date-text date"><time datetime="{{ $dateMachine }}">{{- $dateHuman -}}</time></span>
 
   {{ if ne .Date .Lastmod}}
-    <span class="date-text lastmod">{{- .Lastmod | time.Format "01-02/06" -}}</span></dd>
+    <span class="date-text lastmod">{{- .Lastmod | time.Format "2006-01-02" -}}</span></dd>
   {{ end }}
 
   <dt>Section</dt>

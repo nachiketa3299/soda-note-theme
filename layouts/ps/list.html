@@ -15,10 +15,10 @@
 ) }}
 
 
-{{ $ps_db := .Site.Data.ps_db }}
+{{ $ps_db := hugo.Data.ps_db }}
 {{ $ps_dict := slice }}
 
-{{ range $item := .Site.Data.ps_db }}
+{{ range $item := hugo.Data.ps_db }}
   {{ $latest := index (sort $item.solved "date" "desc") 0 }}
   {{ $dict_entry := merge $item (dict "latest_solved_date" $latest.date)}}
   {{ $ps_dict = $ps_dict | append $dict_entry }}
@@ -65,7 +65,7 @@
         {{ if .solved }}
           <ul class="ps-date-list">
             {{ range .solved }}
-              <li><span class="date-text">{{ .date | time.Format "01-02/06" }}</span></li>
+              <li><span class="date-text">{{ .date | time.Format "2006-01-02" }}</span></li>
             {{ end }}
           </ul>
         {{ else }}

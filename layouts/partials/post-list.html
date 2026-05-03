@@ -24,11 +24,11 @@
         </a>
 
         {{ if ne .Date .Lastmod }}
-          <span class="date-text lastmod">{{ .Lastmod | time.Format "01-02/06" }}</span>
+          <span class="date-text lastmod">{{ .Lastmod | time.Format "2006-01-02" }}</span>
         {{ end }}
 
         {{ if .Date }}
-          <span class="date-text date">{{ .Date | time.Format "01-02/06" }}</span>
+          <span class="date-text date">{{ .Date | time.Format "2006-01-02" }}</span>
         {{ end }}
       </div>
 

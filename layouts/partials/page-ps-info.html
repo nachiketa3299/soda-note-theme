@@ -1,4 +1,4 @@
-{{ $ps_db := .Site.Data.ps_db }}
+{{ $ps_db := hugo.Data.ps_db }}
 
 {{ $parts := split .Title " " }}
 {{ $site := index $parts 0 }}
@@ -13,5 +13,5 @@
   <dt>Ps-Tags</dt>
   <dd class="dd-group">{{- range $match.tags -}}<span class="ps-tag-text">{{ . }}</span>{{- end -}}</dd>
   <dt>Solved</dt>
-  <dd class="dd-group">{{- range $match.solved -}}<span class="date-text">{{ .date | time.Format "01-02/06" }}</span>{{- end -}}</dd>
+  <dd class="dd-group">{{- range $match.solved -}}<span class="date-text">{{ .date | time.Format "2006-01-02" }}</span>{{- end -}}</dd>
 </dl>
