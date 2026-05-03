@@ -1,6 +1,6 @@
 @import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.1/GoormSansCode.min.css");
-@import url("https://statics.goorm.io/fonts/GoormSans/v1.0.0/GoormSans.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable.min.css");
 
 :root {
   --content-width: 800px;
@@ -52,7 +52,7 @@
   --color-page-info-background: var(--color-grey-06);
   --color-footer-background: var(--color-grey-06);
 
-  --font-main: 'Goorm Sans';
+  --font-main: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
   --font-monospace: 'Goorm Sans Code', monospace;
   --font-site-title: 'Luckiest Guy', cursive;
 
@@ -259,35 +259,30 @@ footer {
 }
 
 .post-title-text {
-  color: var(--color-text-link);
-  font-size: 1.2em;
-  font-weight: bold;
+  color: var(--color-grey-01);
+  filter: brightness(0.4);
+  font-size: 1.1rem;
+  font-weight: 600;
 
   text-decoration: none;
 
-    &:hover {
-      text-decoration-line: underline;
-      text-decoration-style: solid;
-    }
+  &:hover {
+    color: var(--color-text-link);
+    filter: none;
+  }
 }
 
 .post-list-item .date-text {
-  float: right;
+  float: none;
 }
 
 .date-text {
-  font-family: var(--font-date);
-  &::before {
-    content: "("
-  }
-  &::after {
-    content: ")"
-  }
-  &.lastmod {
-    color: var(--color-text-lastmod)
-  }
-  &.date {
-    color: var(--color-text-date)
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-grey-01);
+
+  &.lastmod, &.date {
+    color: var(--color-grey-01);
   }
 }
 
@@ -298,30 +293,31 @@ footer {
 }
 
 .term-list li, .post-list li {
-  margin-bottom: 1.5rem;
-  // background-color: var(--color-list-item-background);
-
+  margin-bottom: 1rem;
   border-radius: var(--br-base);
+  background-color: white;
+  border: 1px solid var(--color-grey-05);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+  padding: 1.25rem 1.5rem;
 
-  box-shadow: 
-    rgba(50, 50, 93, 0.25) 0px 12px 25px -20px, 
-    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, 
-    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
 
-  padding: .9rem;
+  &:hover {
+    border-color: var(--color-grey-04);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+  }
 }
 
 .tag-text {
-  font-family: var(--font-tag);
-
-  background-color: var(--color-tag-background);
-  color: var(--color-tag-foreground);
-  border-radius: var(--br-base);
-  padding: 0 0.2rem;
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-grey-01);
+  background: none;
+  padding: 0;
+  border-radius: 0;
 
   &::before {
     content: "#";
-    margin-right: 0.25rem;
   }
 
   > a {
@@ -329,7 +325,7 @@ footer {
     color: inherit;
 
     &:hover {
-      text-decoration: underline;
+      color: var(--color-text-link);
     }
   }
 }
@@ -354,37 +350,31 @@ footer {
 }
 
 .section-text {
-  font-family: var(--font-section);
-  color: var(--color-text-section);
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-grey-01);
 
   > a {
     text-decoration: none;
     color: inherit;
 
     &:hover {
-      text-decoration: underline;
+      color: var(--color-text-link);
     }
   }
 }
 
 .category-text {
-  font-family: var(--font-category);
-  color: var(--color-text-category);
-
-  &::before {
-    content: "[";
-  }
-
-  &::after {
-    content: "]";
-  }
+  font-family: inherit;
+  font-size: 0.85rem;
+  color: var(--color-grey-01);
 
   > a {
     text-decoration: none;
     color: inherit;
 
     &:hover {
-      text-decoration: underline;
+      color: var(--color-text-link);
     }
   }
 }
