@@ -16,21 +16,19 @@
 {{ $style := resources.Get "scss/main.scss" | css.Sass | resources.Fingerprint "sha512" }}
 <link rel="stylesheet" href="{{- $style.Permalink  -}}" integrity="{{- $style.Data.Integrity -}}"/>
 
-{{/* Import MathJax */}}
+{{/* MathJax 3 — SVG 출력, 외부 폰트 의존 없음 */}}
 {{ if .Params.mathjax }}
-  {{/* Config */}}
-  <script type="text/x-mathjax-config">
-  MathJax.Hub.Config({
-    tex2jax: {
-      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
-      processEscapes: true
-    }
-  });
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath:  [['$', '$'],  ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']],
+        processEscapes: true
+      },
+      svg: { fontCache: 'global' }
+    };
   </script>
-  <script 
-    src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
-    type="text/javascript">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" id="MathJax-script" async></script>
 {{ end }}
 
 {{/* Import PlantUML */}}

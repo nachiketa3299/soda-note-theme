@@ -1,6 +1,6 @@
-{{ $title := .title | default "Recent Posts" }}
-{{ $ctx := .ctx }}
-{{ $limit := .limit }}
+{{ $title   := .title   | default "Recent Posts" }}
+{{ $ctx     := .ctx }}
+{{ $limit   := .limit }}
 {{ $section := .section }}
 
 <h2 class="post-list-header-text">{{ $title }}</h2>
@@ -18,44 +18,14 @@
 
   {{ range $pages }}
     <li class="post-list-item">
-      <div>
-        <a class="post-title-text" href="{{ .RelPermalink }}">
-          {{ .LinkTitle | default .Title | default "제목 없음" }}
-        </a>
+      <a class="post-title-text" href="{{ .RelPermalink }}">{{ .LinkTitle | default .Title | default "제목 없음" }}</a>
 
-        {{ if ne .Date .Lastmod }}
-          <span class="date-text lastmod">{{ .Lastmod | time.Format "2006-01-02" }}</span>
-        {{ end }}
+      {{ with .Section }}
+        <span class="section-text"><a href='{{ printf "/%s/" . | relURL }}'>{{ upper . }}</a></span>
+      {{ end }}
 
-        {{ if .Date }}
-          <span class="date-text date">{{ .Date | time.Format "2006-01-02" }}</span>
-        {{ end }}
-      </div>
-
-      <div class="section-category-box">
-        <span class="section-text">
-          <a href='{{ printf "/%s/" .Section | relURL }}'>{{ upper .Section }}</a>
-        </span>
-
-        {{ with .Params.categories }}
-          <span class="category-list">
-            {{ range . }}
-              <span class="category-text">
-                <a href='{{ "/categories/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-              </span>
-            {{ end }}
-          </span>
-        {{ end }}
-      </div>
-
-      {{ with .Params.tags }}
-        <div class="seq-box">
-          {{ range . }}
-            <span class="tag-text">
-              <a href='{{ "/tags/" | relLangURL }}{{ . | urlize }}'>{{ . }}</a>
-            </span>
-          {{ end }}
-        </div>
+      {{ if .Date }}
+        <span class="date-text">{{ .Date | time.Format "2006-01-02" }}</span>
       {{ end }}
     </li>
   {{ end }}

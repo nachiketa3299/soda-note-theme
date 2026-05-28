@@ -1,6 +1,4 @@
-@import url("https://statics.goorm.io/fonts/GoormSansCode/v1.0.1/GoormSansCode.min.css");
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/variable/pretendardvariable.min.css");
 
 :root {
   --content-width: 800px;
@@ -26,7 +24,7 @@
 
   --color-text-mark: var(--color-yellow);
 
-  --color-text-link: var(--color-blue);
+  --color-text-link: #0000EE;       // user-agent 기본 링크 색과 동일
   --color-text-date: var(--color-grey-01);
   --color-text-lastmod: var(--color-pink);
   --color-text-section: var(--color-green);
@@ -52,8 +50,8 @@
   --color-page-info-background: var(--color-grey-06);
   --color-footer-background: var(--color-grey-06);
 
-  --font-main: 'Pretendard Variable', 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
-  --font-monospace: 'Goorm Sans Code', monospace;
+  --font-main: sans-serif;
+  --font-monospace: monospace;
   --font-site-title: 'Luckiest Guy', cursive;
 
   --font-tag: var(--font-monospace);
@@ -61,11 +59,9 @@
   --font-category: var(--font-monospace);
   --font-date: var(--font-monospace);
 
-  --spin-speed: 50s;
+  --padding-box: 0.5em 0.55em;     // admonition / toc / dl / footer 공통 균등 padding
 
-  --padding-box: .35em .75em;
-
-  --br-base: .5rem;
+  --br-base: 0;
 }
 
 body {
@@ -94,6 +90,13 @@ footer {
   font-family: var(--font-main);
 }
 
+// 전체 폭 페이지 — main-box 의 폭 제약 해제
+body.layout-ps-all .main-box {
+  max-width: none;
+  padding: 0.5rem 1.5rem;
+  box-shadow: none;
+}
+
 .menu-box {
   display:flex;
   justify-content: flex-end;
@@ -112,87 +115,81 @@ footer {
 
 nav#TableOfContents {
   background-color: var(--color-toc-background);
-  border-radius: var(--br-base);
 
   &::before {
-    content: "❁ Table Of Contents";
+    content: "Table Of Contents";
     font-weight: bold;
+    display: block;                            // 가로 전체에 border 그리려면 block
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-bottom: 0.4rem;
   }
 
   padding: var(--padding-box);
 
   a {
-    color: var(--color-text-link);
     text-decoration: none;
-    &:hover {
-      text-decoration: underline;
-    }
+    &:hover { text-decoration: underline; }
   }
 }
 
+// PageInfo / PsInfo — 가로 key-value 형식, 구분선 없음
 dl {
-
   display: grid;
-  flex-wrap: wrap;
+  grid-template-columns: max-content 1fr;
+  column-gap: 1rem;
+  row-gap: 0.25em;       // 행 사이 시각 간격 (구분선 대신)
 
   background-color: var(--color-page-info-background);
-  border-radius: var(--br-base);
   padding: var(--padding-box);
-  font-size: .8rem;
+  font-size: .85rem;
+  margin: 0.6rem 0;
 
-  hr {
-    &::before {
-      content: "Fuck";
-    }
-    color: black;
-  }
+  hr { display: none; }   // 옛 "Fuck" hr 더미 숨김
 
   dt {
+    grid-column: 1;
     font-weight: bold;
-    margin-bottom: .5rem;
-    border-top: 1px solid var(--color-grey-04);
-    padding-top: .75rem;
+    margin: 0;
+    padding: 0;
   }
 
   dd {
-    margin-bottom: 1rem;
-    margin-left: 1rem;
-
+    grid-column: 2;
+    margin: 0;
+    padding: 0;
   }
 
   dd.dd-group {
     display: flex;
-    gap: 1rem;
+    flex-wrap: wrap;
+    gap: 0.25rem 0.75rem;
   }
 }
 
-dl.page-info {
+// 헤더 ("Page Info" / "Ps Info") — 두 컬럼 전체 차지, 아래 구분선
+dl.page-info, dl.page-ps-info {
   &::before {
+    grid-column: 1 / -1;
     font-size: 1rem;
-    content: "❁ Page Info";
     font-weight: bold;
-    margin-bottom: 1rem;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+    margin-bottom: 0.4rem;
   }
 }
 
-dl.page-ps-info {
-  &::before {
-    font-size: 1rem;
-    content: "❁ Ps Info";
-    font-weight: bold;
-    margin-bottom: 1rem;
-  }
-}
+dl.page-info::before    { content: "Page Info"; }
+dl.page-ps-info::before { content: "Ps Info"; }
 
 .site-title-text {
   &::before {
-    content: "✿";
+    content: "❀";
     margin-right: .7rem;
     vertical-align: 0rem;
     scale: 140%;
 
     display: inline-block;
-    animation: spin var(--spin-speed) linear infinite;
   }
 
   font-family: var(--font-site-title);
@@ -201,34 +198,34 @@ dl.page-ps-info {
   -moz-osx-font-smoothing: grayscale;
 }
 
+// 메뉴 — 평범한 텍스트 링크 (색은 user-agent 기본)
 .menu-item {
-  font-size: 1rem;
-  font-weight: normal;
-  color: white;
-
-  &::before {
-    display: inline-block;
-    content: "❁";
-    animation: spin var(--spin-speed) linear infinite;
-  }
-
-  padding: .25rem .7rem;
-  background-color: var(--color-text-link);
-  border-radius: var(--br-base);
-
-  // box-shadow: inset 1px 1px black;
-
-  box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 2px 8px;
+  padding: 0;
+  background: none;
 
   > a {
-    color: inherit;
     text-decoration: none;
+    font-size: 0.9rem;
 
-    &:hover {
-      text-decoration-style: wavy;
-      text-decoration-line: underline;
-    }
+    &:hover { text-decoration: underline; }
+    &.active { text-decoration: underline; }
   }
+}
+
+// 메뉴 항목 간격
+.menu-box .menu li {
+  margin: 0 0.5rem;
+}
+
+// 일반 <a> — 색 명시 없음. 브라우저 user-agent 기본 (#0000EE / #551A8B)
+a {
+  text-decoration: none;
+  &:hover { text-decoration: underline; }
+}
+
+// 마크다운/본문이 생성한 클래스 없는 a 는 항상 밑줄
+a:not([class]) {
+  text-decoration: underline;
 }
 
 footer {
@@ -248,28 +245,10 @@ footer {
 }
 
 .post-count-text {
-  font-family: var(--font-monospace);
-  float: right;
-  &::before {
-    content: '{';
-  }
-  &::after {
-    content: '}';
-  }
-}
-
-.post-title-text {
+  font-family: inherit;
+  font-size: 0.85rem;
   color: var(--color-grey-01);
-  filter: brightness(0.4);
-  font-size: 1.1rem;
-  font-weight: 600;
-
-  text-decoration: none;
-
-  &:hover {
-    color: var(--color-text-link);
-    filter: none;
-  }
+  margin-left: 0.5rem;
 }
 
 .post-list-item .date-text {
@@ -292,21 +271,15 @@ footer {
   margin-top: -0.5rem;
 }
 
+// 글 리스트 — • 제목  카테고리  날짜 한 줄 자연 흐름 (브라우저 기본 ul 불릿)
 .term-list li, .post-list li {
-  margin-bottom: 1rem;
-  border-radius: var(--br-base);
-  background-color: white;
-  border: 1px solid var(--color-grey-05);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  padding: 1.25rem 1.5rem;
-
-  transition: border-color 0.15s ease, box-shadow 0.15s ease;
-
-  &:hover {
-    border-color: var(--color-grey-04);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  }
+  margin: 0;
+  padding: 0.1rem 0;
 }
+
+// 항목 사이 간격
+.post-list-item .post-title-text { margin-right: 0.5rem; }
+.post-list-item .section-text    { margin-right: 0.5rem; }
 
 .tag-text {
   font-family: inherit;
@@ -380,52 +353,27 @@ footer {
 }
 
 .single-title-text {
-  &::before {
-    content: "✾";
-    margin-right: .0rem;
-    vertical-align: 0rem;
-    scale: 140%;
-
-    display: inline-block;
-    animation: spin var(--spin-speed) linear infinite;
-  }
+  // 앞 기호 없음
 }
 
 .post-list-header-text {
-  &::before {
-    content: "❀";
-    vertical-align: 0rem;
-    margin-right: .7rem;
-    scale: 140%;
-
-    display: inline-block;
-    animation: spin var(--spin-speed) linear infinite;
-  }
-}
-
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  // 앞 기호 없음
 }
 
 .header-anchor {
-  color: var(--color-text-link);
   > a {
-    color: inherit;
     text-decoration: none;
-
-    &:hover {
-      text-decoration: underline;
-    }
+    &:hover { text-decoration: underline; }
   }
 }
 
+// 모든 헤딩을 h2 크기로 통일 (레벨 구분은 #¹ #² ... 표시자가 책임짐)
 h1:not([class]), h2:not([class]), h3:not([class]), h4:not([class]), h5:not([class]), h6:not([class]) {
+  font-size: 1.5rem;
+  line-height: 1.3;
   font-weight: bold;
+  margin: 1.6em 0 0.5em;       // 위 여유 ↑, 아래 여유 ↓ — 다음 섹션과 분리
+
   text-decoration-line: underline;
   text-decoration-thickness: .08rem;
   text-underline-offset: .5rem;
@@ -441,9 +389,8 @@ strong {
 }
 
 mark {
-  background-color: var(--color-yellow);
-  border-radius: .25rem;
-  padding: 0 .1rem;
+  background-color: rgba(255, 204, 0, 0.35);   // 형광펜 자국 같은 반투명 노랑
+  padding: 0 0.1rem;
 
   &::before, &::after {
     // content: "==";
@@ -462,27 +409,31 @@ table:not(.highlight) {
   }
 }
 
-// 인라인 코드 블럭
+// 인라인 코드 — 크기, 줄 높이 모두 본문과 동일
 code:not(pre > code) {
   font-family: var(--font-monospace);
-
-  color: var(--color-text-inline-code-foreground);
   background-color: var(--color-text-inline-code-background);
-  font-size: .9em;
-
-  padding: .1em .1em;
-  border-radius: .2rem;
+  color: inherit;
+  font-size: 1em;
+  padding: 0;
+  // line-height 명시 제거 → 본문 line-height 상속
 }
 
-// 줄번호 없는 코드 블럭
+// 헤딩 안에 들어가는 code — 헤딩 underline을 침범하지 않게
+// 배경 빼고 모노 폰트만 적용
+:is(h1, h2, h3, h4, h5, h6) code {
+  background: transparent;
+}
+
+// 코드 블록 — 카드와 구분하는 얇은 테두리
 .highlight {
   font-family: var(--font-monospace);
-
-  // font-size: 1rem;
+  border: 1px solid var(--color-grey-04);
+  margin: 0.8rem 0;
 
   pre {
-    border-radius: var(--br-base);
-    padding: var(--padding-box);
+    padding: 0 0.6em;         // 상하 0
+    line-height: 1.35;
   }
 }
 
@@ -516,31 +467,40 @@ code:not(pre > code) {
   }
 }
 
-// 인용구
-.admonition, blockquote {
-
+// 일반 blockquote — 좌측 라인 + 회색 배경
+blockquote {
   padding: var(--padding-box);
   background-color: var(--color-admonition-box-background);
-
   border-left: .4rem var(--color-admonition-box-left-border) solid;
-
-  border-radius: var(--br-base);
-
   margin: 1rem auto;
 
+  // 내부 첫/마지막 요소의 외부 여백을 박스에 흡수
+  > *:first-child { margin-top: 0; }
+  > *:last-child  { margin-bottom: 0; }
+}
+
+// Admonition — <aside> 컨테이너, 컴팩트, 제목 강조
+.admonition {
+  padding: var(--padding-box);
+  background-color: var(--color-admonition-box-background);
+  margin: 0.6rem 0;
+
   .admonition-title-box {
-    &:before {
-      font-family: var(--font-monospace);
-      content: "[[";
-    }
-    &:after {
-      font-family: var(--font-monospace);
-      content: "]]";
-    }
+    margin: 0 0 0.35em;
+    padding-bottom: 0.25em;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.12);
   }
 
   .admonition-title-text {
     font-weight: bold;
+    font-size: 1.1em;
+    letter-spacing: 0.01em;
+  }
+
+  // 본문 wrapper — 내부 첫/마지막 요소의 외부 여백을 박스에 흡수
+  .admonition-body {
+    > *:first-child { margin-top: 0; }
+    > *:last-child  { margin-bottom: 0; }
   }
 }
 
@@ -584,39 +544,58 @@ img.plantuml-image {
 img {
   display: block;
   margin: 0 auto;
-  max-width: var(--content-width);
-}
-
-table.ps-list-table {
-  // all: unset;
   max-width: 100%;
+  height: auto;
+}
 
+// PS 풀이 목록 표 — 디버그 콘솔 톤 (폭은 부모를 따름)
+table.ps-list-table {
+  width: 100%;
   border-collapse: collapse;
-
   border: 1px solid var(--color-grey-03);
-  td, th {
+
+  // 디버그 톤
+  font-family: var(--font-monospace);
+  font-size: 0.8rem;
+  line-height: 1.4;
+
+  th, td {
     border: 1px solid var(--color-grey-03);
+    padding: 0.25em 0.6em;
+    vertical-align: top;
   }
 
-  font-size: 0.95rem;
-
-  .ps-tag-text {
-    font-size: 0.9rem;
+  th {
+    background-color: var(--color-grey-06);
+    font-weight: bold;
+    text-align: center;
   }
 
+  // 행 zebra
+  tbody tr:nth-child(even) {
+    background-color: rgba(0, 0, 0, 0.025);
+  }
+
+  // hover 강조
+  tbody tr:hover {
+    background-color: var(--color-grey-06);
+  }
+
+  // 태그/날짜 ul → 가로 wrap
+  ul.ps-tag-list,
+  ul.ps-date-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.15rem 0.5rem;
+  }
+
+  .ps-tag-text,
   .date-text {
-    font-size: 0.9rem;
+    font-size: inherit;
   }
-}
-
-ul.ps-date-list {
-  list-style: none;
-  padding-left: 0;
-}
-
-ul.ps-tag-list {
-  list-style: none;
-  padding-left: 0;
 }
 
 .ps-tag-text {
@@ -630,6 +609,30 @@ ul.ps-tag-list {
     content: "#";
     margin-right: 0.25rem;
   }
+}
+
+// =====================================================
+// 전역 보정 — box-sizing, 가로 스크롤 차단,
+//             하드코딩된 border-radius 까지 전부 0으로
+// =====================================================
+*, *::before, *::after {
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+// 미디어/표/코드가 컨테이너를 못 넘게
+img, video, iframe, table, pre {
+  max-width: 100%;
+}
+
+// MathJax (mjx-container) 는 내부 측정이 정밀하니 wildcard 영향 차단
+mjx-container, mjx-container * {
+  box-sizing: content-box;
+  border-radius: 0;
 }
 
 

@@ -1,0 +1,18 @@
+{{ define "main" }}
+
+<h1>{{ title .Title }}</h1>
+
+{{ $hidden := slice "drafts" "gamejam" "portfolio" }}
+
+<ul class="term-list">
+  {{- range site.Sections }}
+    {{- if not (in $hidden .Section) }}
+      <li>
+        <a href="{{ .RelPermalink }}">{{ .Title | default .Section | upper }}</a>
+        <span class="post-count-text">{{ len .RegularPages }} posts</span>
+      </li>
+    {{- end }}
+  {{- end }}
+</ul>
+
+{{ end }}

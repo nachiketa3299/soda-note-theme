@@ -5,7 +5,7 @@
     {{ partial "head.html" . }}
   </head>
 
-  <body>
+  <body{{ with .Layout }} class="layout-{{ . }}"{{ end }}>
     <div class='main-box'>
       <header>
         {{ partial "header.html" . }}
